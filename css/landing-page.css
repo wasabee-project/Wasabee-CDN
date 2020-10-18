@@ -4,167 +4,97 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
-body,
-html {
-    width: 100%;
-    height: 100%;
+html, body {
+  height: 100%;
 }
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+body {
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #fff;
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 3rem 5rem rgba(0, 0, 0, .5);
+  background-image:url(../img/intro-bg.png);
+  background-size: cover;
+  background-position: center;
 }
 
-.topnav {
-    font-size: 14px; 
+hr {
+  border-color: rgba(255,255,255,.8);
 }
 
-.lead {
-    font-size: 18px;
-    font-weight: 400;
+.cover-container {
+  max-width: 42em;
+}
+/*
+.masthead, .mastfoot {
+  color: rgba(255, 255, 255, .5);
+  box-shadow: 0 0 2em 2em rgba(0,0,0,.8);
+  background-color: rgba(0,0,0,.8);
+}*/
+
+.masthead {
+  margin-bottom: 2rem;
+  height: 4em;
 }
 
-.intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    padding-bottom: 50px;
-    text-align: center;
-    color: #f8f8f8;
-    background: url(../img/intro-bg.png) no-repeat center center;
-    background-size: cover;
+.nav-masthead .nav-link.nav-brand {
+  background-image: url('../img/bee.svg');
+  background-repeat: no-repeat;
+  width: 3em;
 }
 
-.intro-message {
-    position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+  font-size: 1.4rem;
 }
 
-.intro-message > h1 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 5em;
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
 }
 
-.intro-divider {
-    width: 400px;
-    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
 }
 
-.intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
 }
 
-@media(max-width:767px) {
-    .intro-message {
-        padding-bottom: 15%;
-    }
-
-    .intro-message > h1 {
-        font-size: 3em;
-    }
-
-    ul.intro-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.intro-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
-
-    .intro-divider {
-        width: 100%;
-    }
+.cover .tips {
+  background-color: rgba(0,0,0,.5);
+  border-radius: 1em;
+  box-shadow: 0 0 .2em .4em rgba(0,0,0,.5);
 }
 
-.network-name {
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 2px;
-}
-
-.content-section-a {
-    padding: 50px 0;
-    background-color: #f8f8f8;
-}
-
-.content-section-b {
-    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
-}
-
-.section-heading {
-    margin-bottom: 30px;
-}
-
-.section-heading-spacer {
+@media (min-width: 48em) {
+  .masthead-brand {
     float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
-}
-
-.banner {
-    padding: 100px 0;
-    color: #f8f8f8;
-    background: url(../img/banner-bg.png) no-repeat center center;
-    background-size: cover;
-}
-
-.banner h2 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
-}
-
-.banner ul {
-    margin-bottom: 0;
-}
-
-.banner-social-buttons {
+  }
+  .nav-masthead {
     float: right;
-    margin-top: 0;
+  }
 }
 
-@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        float: left;
-        margin-top: 15px;
-    }
-}
+@media (max-width: 48em) {
+  html {
+    font-size: 80%;
+  }
 
-@media(max-width:767px) {
-    .banner h2 {
-        margin: 0;
-        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-        font-size: 3em;
-    }
+  .display-2 {
+    font-size: 4rem
+  }
 
-    ul.banner-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.banner-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
-}
-
-footer {
-    padding: 50px 0;
-    background-color: #f8f8f8;
-}
-
-p.copyright {
-    margin: 15px 0 0;
+  .btn.btn-block {
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
