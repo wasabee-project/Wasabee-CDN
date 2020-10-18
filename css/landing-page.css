@@ -27,12 +27,11 @@ hr {
 .cover-container {
   max-width: 42em;
 }
-/*
-.masthead, .mastfoot {
-  color: rgba(255, 255, 255, .5);
-  box-shadow: 0 0 2em 2em rgba(0,0,0,.8);
-  background-color: rgba(0,0,0,.8);
-}*/
+
+main .serverlist {
+    width: max-content;
+    margin: 0 auto 1rem auto;
+}
 
 .masthead {
   margin-bottom: 2rem;
@@ -90,11 +89,5 @@ hr {
 
   .display-2 {
     font-size: 4rem
-  }
-
-  .btn.btn-block {
-    width: max-content;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
