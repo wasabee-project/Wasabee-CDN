@@ -24,7 +24,7 @@ h1	{
 }
 .content-area	{
 	background-color:#fff;
-	padding:0 16px 16px 16px; 
+	padding:0 16px 16px 16px;
 	border:1px solid #ddd;
 }
 .card	{
@@ -175,9 +175,13 @@ footer	{
 	background-color:#3f3;
 }
 
+table td {
+	vertical-align: middle;
+}
+
 .handle {
 	background-image:url(/img/reorder.svg)!important;
-	background-position:left;
+	background-size: contain;
 	background-repeat:no-repeat;
 	padding-left:10px;
 	padding-right:10px;
