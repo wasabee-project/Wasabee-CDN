@@ -175,12 +175,13 @@ footer	{
 	background-color:#3f3;
 }
 
-table td {
+.table td {
 	vertical-align: middle;
 }
 
 .handle {
 	background-image:url(/img/reorder.svg)!important;
+	background-position: center;
 	background-size: contain;
 	background-repeat:no-repeat;
 	padding-left:10px;
