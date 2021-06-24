@@ -196,3 +196,7 @@ a.tooltip-display:hover	{
 	color:#666;
 	border-bottom: 1px dotted #3C9!important;
 }
+
+#wasabeeContent table select {
+  max-width: 10rem;
+}
