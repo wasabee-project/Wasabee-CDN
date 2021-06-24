@@ -1,0 +1,4 @@
+[submodule "webui"]
+	path = webui
+	url = https://github.com/wasabee-project/Wasabee-Frontend/
+	branch = dist
