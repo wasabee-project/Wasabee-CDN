@@ -205,7 +205,7 @@ a.tooltip-display:hover	{
 	filter: blur(1px);
 }
 
-#wasabeeContent.loading ~ .loading-animation {
+#wasabeeContent.loading ~ #loading-animation {
   background-image: url(https://cdn2.wasabee.rocks/img/bee.svg);
   background-size: cover;
   background-position-x: 34%;
