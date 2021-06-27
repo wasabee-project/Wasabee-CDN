@@ -200,3 +200,20 @@ a.tooltip-display:hover	{
 #wasabeeContent table select {
   max-width: 10rem;
 }
+
+#wasabeeContent.loading {
+	filter: blur(1px);
+}
+
+#wasabeeContent.loading ~ .loading-animation {
+  background-image: url(https://cdn2.wasabee.rocks/img/bee.svg);
+  background-size: cover;
+  background-position-x: 34%;
+  width: 10rem;
+  height: 10rem;
+  animation: spinner-border 0.9s ease infinite;
+  position: absolute;
+  top: calc(50vh - 5rem);
+  left: calc(50vw - 5rem);
+  z-index: 10;
+}
