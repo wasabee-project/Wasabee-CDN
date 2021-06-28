@@ -38,9 +38,6 @@ h1	{
 .state	{
 	color:#c3c;
 }
-.alert	{
-	color:#c03!important;
-}
 a.delete	{
 	color:c03!important;
 }
@@ -186,6 +183,7 @@ footer	{
 	background-repeat:no-repeat;
 	padding-left:10px;
 	padding-right:10px;
+	cursor: move;
 }
 
 a.tooltip-display	{
@@ -201,10 +199,10 @@ a.tooltip-display:hover	{
   max-width: 10rem;
 }
 
+/* Ops, Teams */
 #wasabeeContent.loading {
 	filter: blur(1px);
 }
-
 #wasabeeContent.loading ~ #loading-animation {
   background-image: url(https://cdn2.wasabee.rocks/img/bee.svg);
   background-size: cover;
@@ -216,4 +214,18 @@ a.tooltip-display:hover	{
   top: calc(50vh - 5rem);
   left: calc(50vw - 5rem);
   z-index: 10;
+}
+
+/* Op, Team */
+#wasabeeContent .loading {
+    cursor: progress;
+}
+
+#wasabeeContent #teams button {
+	width: 100%;
+}
+
+#optable td {
+  padding-top: .4rem;
+  padding-bottom: .4rem;
 }
