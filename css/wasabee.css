@@ -1,7 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
 body {
-	background-color:#f8f8f8;
 	font-weight:normal;
 }
 h1	{
@@ -9,23 +8,19 @@ h1	{
 	font-weight:800;
 }
 .navbar {
-	background-image:url(/img/topnav-bee.png)!important;
+	background-image:url(/img/bee.svg)!important;
 	background-position:right top;
 	background-repeat:no-repeat;
-	background-color:#fff;
 	padding-right:60px;
 }
 .navbar a	{
 	font-weight:700;
-	border-bottom: 1px solid transparent;
 }
 .navbar a:hover	{
 	border-bottom: 1px solid #33cc99;
 }
 .content-area	{
-	background-color:#fff;
 	padding:0 16px 16px 16px;
-	border:1px solid #ddd;
 }
 .card	{
 	margin-top:20px;
@@ -33,39 +28,12 @@ h1	{
 .card-header	{
 	font-size: 150%;
 	font-weight:700;
-	color:#333;
-}
-.state	{
-	color:#c3c;
-}
-a.delete	{
-	color:c03!important;
-}
-a.delete:hover	{
-	color:#f36!important;
-}
-.add-left-space	{
-	padding-left: 24px;
-}
-li.list-group-item	{
-	font-weight:normal;
-	border:none;
-	padding-bottom:4px;
-}
-li.list-group-item a:hover{
-	border-bottom:1px solid #3c9;
-	text-decoration:none;
-}
-li.list-group-item small	{
-	font-weight:normal;
-}
-li.list-group-item p	{
-	margin-bottom:0;
 }
 footer	{
-	background-image:url(/img/bee-glasses.png)!important;
+	background-image:url(/img/glasses.svg)!important;
 	background-position:left;
 	background-repeat:no-repeat;
+	background-color: unset;
 }
 .copyright	{
 	font-weight: 700!important;
@@ -191,7 +159,6 @@ a.tooltip-display	{
 	border-bottom: 1px dotted #666;
 }
 a.tooltip-display:hover	{
-	color:#666;
 	border-bottom: 1px dotted #3C9!important;
 }
 
@@ -228,4 +195,8 @@ a.tooltip-display:hover	{
 #optable td {
   padding-top: .4rem;
   padding-bottom: .4rem;
+}
+
+.container, .container-fluid {
+    padding-top: 1rem;
 }
