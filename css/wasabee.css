@@ -15,6 +15,7 @@ h1	{
 }
 .navbar a	{
 	font-weight:700;
+	border-bottom: 1px solid transparent;
 }
 .navbar a:hover	{
 	border-bottom: 1px solid #33cc99;
