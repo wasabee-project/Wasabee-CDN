@@ -4,4 +4,5 @@
 	branch = dist
 [submodule "iitcplugin/latest"]
 	path = iitcplugin/latest
-	url = gh:wasabee-project/Wasabee-IITC
+	url = https://github.com/wasabee-project/Wasabee-IITC
+	branch = dist
