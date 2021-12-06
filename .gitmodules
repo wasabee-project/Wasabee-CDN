@@ -6,3 +6,6 @@
 	path = iitcplugin/latest
 	url = https://github.com/wasabee-project/Wasabee-IITC
 	branch = dist
+[submodule "beta"]
+	path = beta
+	url = https://github.com/wasabee-project/Wasabee-WebUI
