@@ -28,7 +28,7 @@
         getToken,
         deleteToken,
       } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
-      
+
       // Initialize the Firebase app in the service worker by passing in the messagingSenderId.
       const firebaseConfig = {
         apiKey: "AIzaSyDfGX11zg-3s79hd5Kzbb1TwWvw-JtN33I",
@@ -112,9 +112,7 @@
       });
 
       const rootDir =
-        location.pathname +
-        (location.pathname.slice(-1) === "/" ? "" : "/") +
-        "build/";
+        location.pathname + (location.pathname.slice(-1) === "/" ? "" : "/");
 
       const sw = navigator.serviceWorker.register(rootDir + "sw.js", {
         scope: rootDir,
