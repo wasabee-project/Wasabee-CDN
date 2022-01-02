@@ -8,7 +8,9 @@
   </head>
   <body>
     <div>
-      <div><p>this screen intended to be loaded in an iframe</p></div>
+      <button onclick="window.Notification.requestPermission();">
+        Request notification permission
+      </button>
     </div>
 
     <script type="module">
@@ -56,9 +58,6 @@
           return;
         }
       });
-      
-      // request perm
-      window.Notification.requestPermission();
 
       // respond to messages from Wasabee-IITC
       let port = null;
@@ -153,7 +152,7 @@
             method: "POST",
             mode: "cors",
             cache: "default",
-            credentials: "include",
+            credentials: "omit",
             redirect: "manual",
             referrerPolicy: "origin",
             headers: {
