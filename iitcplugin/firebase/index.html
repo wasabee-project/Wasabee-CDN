@@ -137,11 +137,14 @@
       let firebaseToken = null;
       async function setupMessaging() {
         const w = await sw;
-        const token = await getToken(messaging, {
-          serviceWorkerRegistration: w,
-        });
-        firebaseToken = token;
-        return token;
+        const perm = await window.Notification.requestPermission();
+        if (perm === 'granted') {
+          const token = await getToken(messaging, {
+            serviceWorkerRegistration: w,
+          });
+          firebaseToken = token;
+          return token;
+        }
       }
 
       function sendTokenToWasabee(server, jwt) {
