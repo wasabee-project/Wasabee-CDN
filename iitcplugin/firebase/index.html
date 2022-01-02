@@ -59,7 +59,7 @@
       // respond to messages from Wasabee-IITC
       let port = null;
       function initPort(event) {
-        port = e.ports[0];
+        port = event.ports[0];
         port.onmessage = onChannelMessage;
         window.removeEventListener("message", initPort);
       }
@@ -111,9 +111,7 @@
         });
       });
 
-      const rootDir =
-        location.pathname + (location.pathname.slice(-1) === "/" ? "" : "/");
-
+      const rootDir = location.pathname;
       const sw = navigator.serviceWorker.register(rootDir + "sw.js", {
         scope: rootDir,
       });
