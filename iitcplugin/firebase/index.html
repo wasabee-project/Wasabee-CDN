@@ -17,6 +17,7 @@
         getAnalytics,
         setAnalyticsCollectionEnabled,
         logEvent,
+        setCurrentScreen,
       } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
       import {
         getAuth,
@@ -137,7 +138,7 @@
       async function setupMessaging() {
         const w = await sw;
         const token = await getToken(messaging, {
-          serviceWorkerRegistration: sw,
+          serviceWorkerRegistration: w,
         });
         firebaseToken = token;
         return token;
