@@ -35,7 +35,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -78,7 +78,7 @@ paths:
         - "User Info"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -188,7 +188,7 @@ paths:
         - $ref: "#/components/parameters/opIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -216,7 +216,7 @@ paths:
         - $ref: "#/components/parameters/markerIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -268,7 +268,7 @@ paths:
         - $ref: "#/components/parameters/markerIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -315,7 +315,7 @@ paths:
         - $ref: "#/components/parameters/linkIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -367,7 +367,7 @@ paths:
         - $ref: "#/components/parameters/linkIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -394,7 +394,7 @@ paths:
         - $ref: "#/components/parameters/linkIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -465,7 +465,7 @@ paths:
         - $ref: "#/components/parameters/taskIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -492,7 +492,7 @@ paths:
         - $ref: "#/components/parameters/taskIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -574,7 +574,7 @@ paths:
             $ref: "#/components/schemas/PortalID"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -603,7 +603,7 @@ paths:
         - $ref: "#/components/parameters/opIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -633,7 +633,7 @@ paths:
         - $ref: "#/components/parameters/opIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -806,7 +806,7 @@ paths:
         - $ref: "#/components/parameters/teamIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -830,7 +830,7 @@ paths:
         - $ref: "#/components/parameters/teamIDParam"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -971,7 +971,7 @@ paths:
             $ref: "#/components/schemas/GoogleID"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
@@ -1000,7 +1000,7 @@ paths:
             $ref: "#/components/schemas/GoogleID"
       requestBody:
         content:
-          application/x-www-form-urlencoded:
+          multipart/form-data:
             schema:
               type: object
               required:
