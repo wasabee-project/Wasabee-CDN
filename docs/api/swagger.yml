@@ -1362,7 +1362,7 @@ components:
         dependsOn:
           type: array
           items:
-            $ref: "#/components/schemas/GoogleID"
+            $ref: "#/components/schemas/TaskID"
         deltaminutes:
           type: number
     Link:
