@@ -498,7 +498,7 @@ paths:
               required:
                 - agent
               properties:
-                order:
+                agent:
                   type: array
                   items:
                     $ref: "#/components/schemas/GoogleID"
@@ -1342,7 +1342,7 @@ components:
     Task:
       type: object
       properties:
-        ID:
+        task:
           $ref: "#/components/schemas/TaskID"
         comment:
           type: string
@@ -1356,13 +1356,21 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/GoogleID"
-        assignedTo:
-          $ref: "#/components/schemas/GoogleID"
+        dependsOn:
+          type: array
+          items:
+            $ref: "#/components/schemas/GoogleID"
+        deltaminutes:
+          type: number
     Link:
       allOf:
         - $ref: "#/components/schemas/Task"
         - type: object
           properties:
+            ID:
+              $ref: "#/components/schemas/LinkID"
+            assignedTo:
+              $ref: "#/components/schemas/GoogleID"
             fromPortalId:
               $ref: "#/components/schemas/PortalID"
             toPortalId:
@@ -1370,8 +1378,6 @@ components:
             description:
               type: string
               description: deprecated for "comment"
-            assignedTo:
-              type: string
             throwOrderPos:
               type: integer
               description: deprecated for "order"
@@ -1384,6 +1390,10 @@ components:
         - $ref: "#/components/schemas/Task"
         - type: object
           properties:
+            ID:
+              $ref: "#/components/schemas/LinkID"
+            assignedTo:
+              $ref: "#/components/schemas/GoogleID"
             portalId:
               $ref: "#/components/schemas/PortalID"
             type:
