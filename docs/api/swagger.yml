@@ -502,6 +502,9 @@ paths:
                   type: array
                   items:
                     $ref: "#/components/schemas/GoogleID"
+            encoding:
+              agent:
+                explode: true
       responses:
         "200":
           $ref: "#/components/responses/PostSuccess"
