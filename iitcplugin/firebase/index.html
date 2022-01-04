@@ -90,8 +90,9 @@
             logEvent(analytics, "exception", data);
             break;
           case "wasabeeLogout":
-            deleteToken(messaging);
-            firebaseToken = null;
+            // don't delete the token for now
+            // deleteToken(messaging);
+            // firebaseToken = null;
             logEvent(analytics, "logout", data);
             break;
           default:
