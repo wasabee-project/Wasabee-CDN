@@ -30,6 +30,7 @@
         onMessage,
         getToken,
         deleteToken,
+        isSupported,
       } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging.js";
 
       // Initialize the Firebase app in the service worker by passing in the messagingSenderId.
@@ -47,17 +48,8 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
-      const messaging = getMessaging(app);
-      const auth = getAuth(app);
 
       setAnalyticsCollectionEnabled(analytics, true);
-
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          console.log("Firebase auth login: ", user.uid);
-          return;
-        }
-      });
 
       // respond to messages from Wasabee-IITC
       let port = null;
@@ -68,7 +60,7 @@
       }
       window.addEventListener("message", initPort);
 
-      async function onChannelMessage(event) {
+      function onChannelMessage(event) {
         const data = event.data;
         // Messages coming from IITC
         console.log(data);
@@ -76,8 +68,7 @@
           // this is used to trigger sending the firebase tokens to wasabee server
           // if they have not already been sent (e.g. first login)
           case "wasabeeLogin":
-            await setupMessaging();
-            await sendTokenToWasabee(data.server, data.jwt);
+            onLogin(data.server, data.jwt);
             logEvent(analytics, "login", data);
             break;
           case "analytics":
@@ -103,65 +94,80 @@
         }
       }
 
-      // Messages coming in from Firebase to IITC -- this relays them
-      onMessage(messaging, (payload) => {
-        // console.log('Firebase message received: ', payload.data);
-        // post the message to the IITC-hosted iframe.
-        if (port) port.postMessage(payload);
+      function onLogin() {}
 
-        logEvent(analytics, "message_received", {
-          source: "firebase",
-          app_name: "Wasabee-IITC (fb-sw)",
-        });
-      });
+      isSupported().then((b) => {
+        if (!b) return;
+        const messaging = getMessaging(app);
 
-      const rootDir = location.pathname;
-      const sw = navigator.serviceWorker.register(rootDir + "sw.js", {
-        scope: rootDir,
-      });
-      sw.then((sw) => {
-        sw.addEventListener("message", onSWMessage);
-      });
+        onLogin = async function (server, jwt) {
+          if (messaging) {
+            await setupMessaging();
+            await sendTokenToWasabee(server, jwt);
+          }
+        };
 
-      // background forward
-      function onSWMessage(event) {
-        if (!event.data) event.data = {};
-        if (!event.data.app_name)
-          event.data.app_name = "Wasabee-Firebase-ServiceWorker";
-        if (!event.data.app_version) event.data.app_version = "0.1 (SW)";
-        // Messages coming from the Service Worker. Forward it along to IITC.
-        console.debug("service worker message received: ", event.data);
-        port.postMessage(event.data);
+        // Messages coming in from Firebase to IITC -- this relays them
+        onMessage(messaging, (payload) => {
+          // console.log('Firebase message received: ', payload.data);
+          // post the message to the IITC-hosted iframe.
+          if (port) port.postMessage(payload);
 
-        event.data.source = "service-worker";
-        logEvent(analytics, "message_received", event.data);
-      }
-
-      let firebaseToken = null;
-      async function setupMessaging() {
-        const w = await sw;
-        const token = await getToken(messaging, {
-          serviceWorkerRegistration: w,
-        });
-        firebaseToken = token;
-        return token;
-      }
-
-      function sendTokenToWasabee(server, jwt) {
-        if (firebaseToken)
-          return fetch(server + "/api/v1/me/firebase", {
-            method: "POST",
-            mode: "cors",
-            cache: "default",
-            credentials: "omit",
-            redirect: "manual",
-            referrerPolicy: "origin",
-            headers: {
-              Authorization: "Bearer " + jwt,
-            },
-            body: firebaseToken,
+          logEvent(analytics, "message_received", {
+            source: "firebase",
+            app_name: "Wasabee-IITC (fb-sw)",
           });
-      }
+        });
+
+        const rootDir = location.pathname;
+        const sw = navigator.serviceWorker.register(rootDir + "sw.js", {
+          scope: rootDir,
+        });
+        sw.then((sw) => {
+          sw.addEventListener("message", onSWMessage);
+        });
+
+        // background forward
+        function onSWMessage(event) {
+          if (!event.data) event.data = {};
+          if (!event.data.app_name)
+            event.data.app_name = "Wasabee-Firebase-ServiceWorker";
+          if (!event.data.app_version) event.data.app_version = "0.1 (SW)";
+          // Messages coming from the Service Worker. Forward it along to IITC.
+          console.debug("service worker message received: ", event.data);
+          port.postMessage(event.data);
+
+          event.data.source = "service-worker";
+          logEvent(analytics, "message_received", event.data);
+        }
+
+        let firebaseToken = null;
+        async function setupMessaging() {
+          const w = await sw;
+          const token = await getToken(messaging, {
+            serviceWorkerRegistration: w,
+          });
+          firebaseToken = token;
+          return token;
+        }
+
+        function sendTokenToWasabee(server, jwt) {
+          if (firebaseToken) {
+            return fetch(server + "/api/v1/me/firebase", {
+              method: "POST",
+              mode: "cors",
+              cache: "default",
+              credentials: "omit",
+              redirect: "manual",
+              referrerPolicy: "origin",
+              headers: {
+                Authorization: "Bearer " + jwt,
+              },
+              body: firebaseToken,
+            });
+          }
+        }
+      });
     </script>
   </body>
 </html>
