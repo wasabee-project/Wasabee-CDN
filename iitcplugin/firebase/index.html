@@ -69,13 +69,15 @@
           // if they have not already been sent (e.g. first login)
           case "wasabeeLogin":
             onLogin(data.server, data.jwt);
-            logEvent(analytics, "login", data);
+            logEvent(analytics, "login", {
+              method: data.method
+            });
             break;
           case "analytics":
-            data.screen_name = data.action;
-            data.title = data.action;
-            // logEvent(analytics, "screen_view", event.data);
-            setCurrentScreen(analytics, data.action, data);
+            logEvent(analytics, "iitc_event", {
+              action: data.action,
+            });
+            // setCurrentScreen(analytics, data.action, data);
             break;
           case "exception":
             logEvent(analytics, "exception", data);
@@ -84,7 +86,7 @@
             // don't delete the token for now
             // deleteToken(messaging);
             // firebaseToken = null;
-            logEvent(analytics, "logout", data);
+            logEvent(analytics, "logout");
             break;
           default:
             console.error(
@@ -115,7 +117,8 @@
 
           logEvent(analytics, "message_received", {
             source: "firebase",
-            app_name: "Wasabee-IITC (fb-sw)",
+            app_name: "Wasabee-IITC (fb)",
+            command: payload.data.cmd,
           });
         });
 
@@ -138,7 +141,11 @@
           port.postMessage(event.data);
 
           event.data.source = "service-worker";
-          logEvent(analytics, "message_received", event.data);
+          logEvent(analytics, "message_received", {
+            source: "firebase",
+            app_name: "Wasabee-IITC (fb-sw)",
+            command: event.data.data.cmd,
+          });
         }
 
         let firebaseToken = null;
