@@ -112,6 +112,8 @@
               console.log("[wasabee-frame]", "Firebase setup");
             } catch (e) {
               console.error("[wasabee-frame]", e);
+              if (e.code === "messaging/permission-blocked")
+                port.postMessage("permission-blocked");
             }
           }
         };
