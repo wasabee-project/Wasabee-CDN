@@ -51,12 +51,14 @@
 
       setAnalyticsCollectionEnabled(analytics, true);
 
+      let messaging = null;
       // respond to messages from Wasabee-IITC
       let port = null;
       function initPort(event) {
         port = event.ports[0];
         port.onmessage = onChannelMessage;
         window.removeEventListener("message", initPort);
+        if (messaging) port.postMessage("ready");
       }
       window.addEventListener("message", initPort);
 
@@ -70,7 +72,7 @@
           case "wasabeeLogin":
             onLogin(data.server, data.jwt);
             logEvent(analytics, "login", {
-              method: data.method
+              method: data.method,
             });
             break;
           case "analytics":
@@ -100,14 +102,21 @@
 
       isSupported().then((b) => {
         if (!b) return;
-        const messaging = getMessaging(app);
+        messaging = getMessaging(app);
 
         onLogin = async function (server, jwt) {
           if (messaging) {
-            await setupMessaging();
-            await sendTokenToWasabee(server, jwt);
+            try {
+              await setupMessaging();
+              await sendTokenToWasabee(server, jwt);
+              console.log("[wasabee-frame]", "Firebase setup");
+            } catch (e) {
+              console.error("[wasabee-frame]", e);
+            }
           }
         };
+
+        if (port) port.postMessage("ready");
 
         // Messages coming in from Firebase to IITC -- this relays them
         onMessage(messaging, (payload) => {
