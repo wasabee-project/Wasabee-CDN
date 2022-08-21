@@ -204,3 +204,9 @@ a.tooltip-display:hover	{
 .container, .container-fluid {
     padding-top: 1rem;
 }
+
+@media (prefers-color-scheme: dark) {
+	.dark-filter-invert {
+		filter: invert(1);
+	}
+}
