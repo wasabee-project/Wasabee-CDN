@@ -72,11 +72,15 @@
             onLogin(data.server, data.jwt);
             logEvent(analytics, "login", {
               method: data.method,
+              app_name: data.app_name,
+              app_version: data.app_version,
             });
             break;
           case "analytics":
             logEvent(analytics, "iitc_event", {
               action: data.action,
+              app_name: data.app_name,
+              app_version: data.app_version,
             });
             // setCurrentScreen(analytics, data.action, data);
             break;
